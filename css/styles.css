@@ -6,6 +6,10 @@
     border: 1px black solid;
 }
 
-.black {
+.blackHover {
+    background-color: black;
+}
+
+.blackClick {
     background-color: black;
 }
