@@ -1,4 +1,35 @@
 const grid = document.getElementById('grid');
+let blackColor = true;
+let rainbowColor = false;
+let monotoneColor = false;
+let erasing = false;
+
+function colors() {
+    blackColor = false;
+    rainbowColor = false;
+    monotoneColor = false;
+    erasing = false;
+}
+
+function black() {
+    colors();
+    blackColor = true;
+}
+
+function rainbow() {
+    colors();
+    rainbowColor = true;
+}
+
+function monotone() {
+    colors();
+    monotoneColor = true;
+}
+
+function eraser() {
+    colors();
+    erasing = true;
+}
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
@@ -14,10 +45,26 @@ function makeBox(boxNum) {
         boxes.addEventListener('mousedown', color);
 
         boxes.addEventListener('mouseenter', () => {
-            boxes.classList.add('black');
+            if(blackColor === true) {
+                boxes.classList.add('black');
+            } else if(rainbowColor === true) {
+        
+            } else if(monotoneColor === true) {
+        
+            } else if(erasing === true) {
+                boxes.classList.add('white');
+            }
         })
         boxes.addEventListener('mouseout', () => {
-            boxes.classList.remove('black');
+            if(blackColor === true) {
+                boxes.classList.remove('black');
+            } else if(rainbowColor === true) {
+        
+            } else if(monotoneColor === true) {
+        
+            } else if(erasing === true) {
+                boxes.classList.remove('white');
+            }
         })
 
         grid.appendChild(boxes).id = 'box';    
@@ -27,8 +74,17 @@ function makeBox(boxNum) {
 function color(e) {
     if (e.type === 'mouseover' && !mouseDown) {
         return;
-    } else {
+    } else if(blackColor === true) {
         e.target.style.backgroundColor = `black`;
+    } else if(rainbowColor === true) {
+        const randomR = Math.floor(Math.random() * 256);
+        const randomG = Math.floor(Math.random() * 256);
+        const randomB = Math.floor(Math.random() * 256);
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    } else if(monotoneColor === true) {
+        e.target.style.backgroundColor = `rgba(0, 0, 0, 0.1)`
+    } else if(erasing === true) {
+        e.target.style.backgroundColor = `white`;
     }
 }
 
@@ -38,19 +94,15 @@ function removeAllChild(parent) {
     }
 }
 
-function grid16() {
-    removeAllChild(grid);
-    makeBox(16);
+function gridSize() {
+    let size = prompt('Choose a size.', '');
+    size = +size;
+    if (typeof size === "number" && size <= 100 && size > 0) {
+        removeAllChild(grid);
+        makeBox(size);
+    } else {
+        alert('Error');
+    }
 }
 
-function grid64() {
-    removeAllChild(grid);
-    makeBox(64);
-}
-
-function grid32() {
-    removeAllChild(grid);
-    makeBox(32);
-}
-
-grid16();
+makeBox(16);
