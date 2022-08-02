@@ -3,6 +3,7 @@ let blackColor = true;
 let rainbowColor = false;
 let monotoneColor = false;
 let erasing = false;
+let size = 16;
 
 function colors() {
     blackColor = false;
@@ -76,13 +77,16 @@ function color(e) {
         return;
     } else if(blackColor === true) {
         e.target.style.backgroundColor = `black`;
+        e.target.style.opacity = 1;
     } else if(rainbowColor === true) {
         const randomR = Math.floor(Math.random() * 256);
         const randomG = Math.floor(Math.random() * 256);
         const randomB = Math.floor(Math.random() * 256);
+        e.target.style.opacity = 1;
         e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
     } else if(monotoneColor === true) {
-        e.target.style.backgroundColor = `rgba(0, 0, 0, 0.1)`
+        e.target.style.backgroundColor = `rgb(0, 0, 0)`
+        e.target.style.opacity = (parseFloat(this.style.opacity) || 0) + 0.1;
     } else if(erasing === true) {
         e.target.style.backgroundColor = `white`;
     }
@@ -95,7 +99,7 @@ function removeAllChild(parent) {
 }
 
 function gridSize() {
-    let size = prompt('Choose a size.', '');
+    size = prompt('Choose a size.', '');
     size = +size;
     if (typeof size === "number" && size <= 100 && size > 0) {
         removeAllChild(grid);
@@ -103,6 +107,11 @@ function gridSize() {
     } else {
         alert('Error');
     }
+}
+
+function reset() {
+    removeAllChild(grid);
+    makeBox(size);
 }
 
 makeBox(16);
