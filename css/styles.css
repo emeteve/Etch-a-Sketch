@@ -2,7 +2,7 @@
     display: grid;
     width: 500px;
     height: 500px;
-    border: 1px black solid;
+    border: 2px black solid;
 }
 
 .black {
@@ -11,4 +11,67 @@
 
 .white {
     background-color: white;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sizeb,
+.blackb,
+#rainbowb,
+.monotoneb,
+.eraserb,
+.resetb {
+    height: 60px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px black solid;
+}
+
+.sizeb {
+    background-color: rgba(148, 205, 255, 0.685);
+}
+
+.blackb {
+    color: white;
+    background-color: black;
+    border: 2px grey solid;
+}
+
+.monotoneb {
+    background-color: grey;
+}
+
+.eraserb {
+    background-color: white;
+}
+
+.resetb {
+    background-color: rgb(231, 18, 18);
+    color: white;
+}
+
+.header {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    margin-bottom: 5px;
 }

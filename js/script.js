@@ -1,9 +1,18 @@
 const grid = document.getElementById('grid');
+const rainbowButton = document.getElementById('rainbowb');
 let blackColor = true;
 let rainbowColor = false;
 let monotoneColor = false;
 let erasing = false;
 let size = 16;
+let index = 0;
+
+rainbowButton.addEventListener('click', () => {
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    rainbowButton.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+})
 
 function colors() {
     blackColor = false;
